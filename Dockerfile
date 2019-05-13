@@ -12,3 +12,5 @@ RUN go get github.com/jteeuwen/go-bindata/... && \
 FROM mfrancis95/minio-s3-gateway
 
 COPY --from=0 /go/minio/minio /usr/bin/minio
+
+ENV S3_ENDPOINT https://s3.csh.rit.edu
