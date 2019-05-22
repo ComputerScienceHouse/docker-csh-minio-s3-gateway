@@ -3,8 +3,8 @@ FROM golang:alpine
 RUN apk --no-cache add bash git make perl yarn && \
     git clone --depth=1 https://github.com/minio/minio
 
-COPY login.less /go/minio/browser/app/less/inc/login.less
-COPY variables.less /go/minio/browser/app/less/inc/variables.less
+COPY logo.svg /go/minio/browser/app/img/logo.svg
+COPY login.less sidebar.less variables.less /go/minio/browser/app/less/inc/
 
 RUN go get github.com/jteeuwen/go-bindata/... && \
     go get github.com/elazarl/go-bindata-assetfs/... && cd minio/browser && \
