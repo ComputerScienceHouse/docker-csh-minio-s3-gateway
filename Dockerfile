@@ -4,9 +4,10 @@ RUN apk --no-cache add bash git make perl yarn && \
     git clone --depth=1 https://github.com/minio/minio
 
 COPY logo.svg /go/minio/browser/app/img/logo.svg
-COPY login.less sidebar.less variables.less /go/minio/browser/app/less/inc/
+COPY login.less sidebar.less /go/minio/browser/app/less/inc/
 
-RUN go get github.com/jteeuwen/go-bindata/... && \
+RUN sed -i s/00303f/b0197e/ /go/minio/browser/app/less/inc/variables.less && \
+    go get github.com/jteeuwen/go-bindata/... && \
     go get github.com/elazarl/go-bindata-assetfs/... && cd minio/browser && \
     yarn && yarn release && cd .. && make
 
